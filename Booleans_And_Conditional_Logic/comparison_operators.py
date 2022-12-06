@@ -2,7 +2,7 @@
 #* COMPARISON OPERATORS
 # a = 1 && b = 1
 
-# truty if a has the same value as b
+# truthy if a has the same value as b
     # a == b ==> true
 # truthy if a does not have the same value as b
     # a != b ==> false

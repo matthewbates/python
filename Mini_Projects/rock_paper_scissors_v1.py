@@ -1,55 +1,56 @@
+from random import randint
+player_wins = 0
+computer_wins = 0
+winning_score = 3
 
-#* VERSION 1
-print("Rock...")
-print("Paper...")
-print("Scissors...")
+while player_wins < winning_score and computer_wins < winning_score:
+    print(f"Player Score: {player_wins} Computer Score: {computer_wins}")
+    print("...rock...")
+    print("...paper...")
+    print("...scissors...")
 
-# initialize player1 and player2
-player1 = input("Player 1, make your move: ")
-player2 = input("Player 2, make your move: ")
+    player = input("Enter your choice: ").lower()
+    if player == "quit" or player == "q":
+        break
+    random_num = randint(0, 2)
+    if (random_num == 0):
+        computer = "rock"
+    elif (random_num == 1):
+        computer = "paper"
+    else:
+        computer = "scissors"
+    print(f"The Computer plays {computer}")
 
-if player1 == "rock" and player2 == "scissors":
-    print("player1 wins!")
-elif player1 == "rock" and player2 == "paper":
-    print("player2 wins!")
-elif player1 == "paper" and player2 == "rock":
-    print("player1 wins!")
-elif player1 == "paper" and player2 == "scissors":
-    print("player2 wins!")
-elif player1 == "scissors" and player2 == "paper":
-    print("player1 wins!")
-elif player1 == "scissors" and player2 == "rock":
-    print("player2 wins!")
-elif player1 == player2:
-    print("it's a tie!")
+    # edge case - there is a tie
+    if player == computer:
+        print("It's a tie!")
+    elif player == "rock":
+        if computer == "paper":
+            print("Computer wins!")
+            computer_wins += 1
+        else:
+            print("Player wins!")
+            player_wins += 1
+    elif player == "paper":
+        if computer == "scissors":
+            print("Computer wins!")
+            computer_wins += 1
+        else:
+            print("Player wins!")
+            player_wins += 1
+    elif player == "scissors":
+        if computer == "rock":
+            print("Computer wins!")
+            computer_wins += 1
+        else:
+            print("Player wins!")
+            player_wins += 1
+    else:
+        print("Please enter a valid move!")
+
+if player_wins > computer_wins:
+    print("Congrats, you won!")
+elif player_wins == computer_wins:
+    print("It's a tie...")
 else:
-    print("something went wrong.")
-
-#* VERSION 2
-print("Rock..")
-print("Paper..")
-print("Scissors..")
-
-player1 = input("Player 1, make your move! ")
-print("***NO CHEATING***\n" * 20)
-player2 = input("Player 2, make your move! ")
-
-if player1 == player2:
-    print("It's a tie!")
-elif player1 == "rock":
-    if player2 == "scissors":
-        print("player1 wins!")
-    elif player2 == "paper":
-        print("player2 wins!")
-elif player1 == "paper":
-    if player2 == "rock":
-        print("player1 wins!")
-    elif player2 == "scissors":
-        print("player2 wins!")
-elif player1 == "scissors":
-    if player2 == "paper":
-        print("player1 wins!")
-    elif player2 == "rock":
-        print("player2 wins!")
-else:
-    print("Something went wrong.")
+    print("Oh no, the computer won!")
